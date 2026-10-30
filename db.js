@@ -2,6 +2,7 @@ const mysql = require('mysql2/promise');
 require('dotenv').config();
 
 // Pool de conexiones a MySQL Aiven
+
 const db = mysql.createPool({
     host: process.env.DB_HOST,
     port: Number(process.env.DB_PORT) || 10900,
@@ -15,7 +16,7 @@ const db = mysql.createPool({
     connectionLimit: 10,
     queueLimit: 0
 });
-
+module.exports = pool.promise();
 // Probar conexión inicial
 (async () => {
     try {
